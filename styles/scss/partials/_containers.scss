@@ -1,0 +1,53 @@
+// containers //
+
+@use "variables" as *;
+
+.nav__container {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    height: 110px;
+    padding: 25px 50px 15px;
+    width: 100%;
+}
+
+.main__container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 50px;
+    height: 100vh;
+    width: 100%;
+}
+
+.links__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.img {
+
+    &__container {
+    background-color: $color-primary;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 40px;
+    width: 70%;
+    height: 80%;
+    }
+
+    &__clipping {
+        display: flex;
+        align-items: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        box-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+}

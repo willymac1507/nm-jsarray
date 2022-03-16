@@ -1,0 +1,21 @@
+// base styles
+
+@use "variables" as *;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-weight: 400;
+}
+
+body {
+    background-color: $color-contrast;
+    margin: 0;
+}
+
+h1 {
+    font-weight: normal;
+}

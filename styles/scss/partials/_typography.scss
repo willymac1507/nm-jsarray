@@ -1,0 +1,12 @@
+// typography
+
+.nav {
+    &__link {
+        font-size: 2.5rem;
+        line-height: 2rem;
+    }
+
+    &__logo .nav__link {
+        font-size: 3.5rem;
+    }
+}
