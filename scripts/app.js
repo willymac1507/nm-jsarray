@@ -1,14 +1,5 @@
 $(function () {
-    getImage()
-        .then((url) => {
-            $('#main-image').attr('src', url)
-        })
-        .then(() => {
-            $('#main-image').load(window.location.href + " #main-image");
-        })
-        .then(() => {
-            $('#main-image').fadeIn()
-        });
+    newImage();
 })
 
 async function getImage() {
@@ -20,8 +11,40 @@ async function getImage() {
     // })
     const randomImage = fetch('https://picsum.photos/1000')
         // .then(response => response.json())
-        .then(data => {return data.url} )
+        .then(data => {
+            return data.url
+        })
         .catch(error => console.log('Something went wrong!', error));
     return randomImage;
 }
 
+async function fadeImage(image) {
+    if ($('#main-image:visible')) {
+        $('#main-image').fadeOut();
+        setTimeout(500);
+    }
+}
+
+async function newImage() {
+    const image = $('#main-image');
+
+    getImage()
+        .then((url) => {
+            image.attr('src', url);
+        })
+        .then(() => {
+            image.load(window.location.href + " #main-image");
+        })
+        .then(() => {
+            image.fadeIn('slow');
+        });
+}
+
+$('.link--refresh').on('click', async () => {
+    const image = $('#main-image');
+    image.fadeOut(300);
+    setTimeout(() => {
+        newImage();
+    }, 300);
+    
+});
