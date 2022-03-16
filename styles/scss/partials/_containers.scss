@@ -2,26 +2,23 @@
 
 @use "variables" as *;
 
-.nav__container {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    align-items: space-between;
-    justify-content: center;
-    top: 0;
-    left: 0;
-    height: 110px;
-    padding: 25px 50px 15px;
-    width: 100%;
-}
-
 .main__container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 120px;
+    max-height: calc(-webkit-fill-available - 120px);
     height: 100vh;
+    width: 100%;
+}
+
+.nav__container {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    justify-content: center;
+    height: 110px;
+    padding: 25px 50px 15px;
     width: 100%;
 }
 
@@ -40,9 +37,10 @@
     &__container {
     background-color: $color-secondary;
     border-radius: 5px;
+    margin-top: 10px;
     padding: 40px;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 120px);
     }
 
     &__clipping {

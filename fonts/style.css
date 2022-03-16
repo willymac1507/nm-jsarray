@@ -1,10 +1,7 @@
 @font-face {
   font-family: 'IcoMoon';
   src:  url('IcoMoon.eot?xyi5oz');
-  src:  url('IcoMoon.eot?xyi5oz#iefix') format('embedded-opentype'),
-    url('IcoMoon.ttf?xyi5oz') format('truetype'),
-    url('IcoMoon.woff?xyi5oz') format('woff'),
-    url('IcoMoon.svg?xyi5oz#IcoMoon') format('svg');
+  src:  url('IcoMoon.woff?xyi5oz') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
