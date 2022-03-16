@@ -1,0 +1,14 @@
+// buttons
+
+@use "variables" as *;
+
+.save__button {
+    padding: 5px 20px;
+    height: 100%;
+    border-left: 1px solid $color-primary;
+    border-right: 1px solid $color-primary;
+    border-radius: 5px;
+    &:hover {
+        cursor: pointer;
+    }
+}

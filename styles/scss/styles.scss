@@ -1,6 +1,10 @@
+@use "partials/reset/normalize/import-now";
+
 @use "partials/base";
 @use "partials/containers";
 @use "partials/images";
 @use "partials/nav";
 @use "partials/typography";
+@use "partials/forms";
+@use "partials/buttons";
 

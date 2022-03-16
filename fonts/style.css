@@ -1,7 +1,10 @@
 @font-face {
   font-family: 'IcoMoon';
-  src:  url('IcoMoon.eot?xyi5oz');
-  src:  url('IcoMoon.woff?xyi5oz') format('woff');
+  src:  url('IcoMoon.eot?1tp8bg');
+  src:  url('IcoMoon.eot?1tp8bg#iefix') format('embedded-opentype'),
+    url('IcoMoon.ttf?1tp8bg') format('truetype'),
+    url('IcoMoon.woff?1tp8bg') format('woff'),
+    url('IcoMoon.svg?1tp8bg#IcoMoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -32,6 +35,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-times:before {
+  content: "\e906";
+}
+.icon-tick:before {
+  content: "\e907";
+}
+.icon-phone_iphone:before {
+  content: "\e901";
+}
+.icon-tablet_mac:before {
+  content: "\e900";
+}
+.icon-cancel:before {
+  content: "\e909";
+}
+.icon-check:before {
+  content: "\e908";
+}
 .icon-heart-stroke:before {
   content: "\e902";
 }
@@ -41,6 +62,9 @@
 .icon-aperture:before {
   content: "\e904";
 }
+.icon-eye:before {
+  content: "\e905";
+}
 .icon-arrow-right2:before {
   content: "\ea3c";
 }
@@ -49,12 +73,6 @@
 }
 .icon-github1:before {
   content: "\eab0";
-}
-.icon-phone_iphone:before {
-  content: "\e901";
-}
-.icon-tablet_mac:before {
-  content: "\e900";
 }
 .icon-phone:before {
   content: "\e9e3";
