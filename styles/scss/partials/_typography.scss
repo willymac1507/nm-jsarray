@@ -1,12 +1,56 @@
 // typography
 
+@use "variables" as *;
+
 .nav {
     &__link {
         font-size: 2.5rem;
         line-height: 2rem;
     }
 
-    &__logo .nav__link {
-        font-size: 3.5rem;
+    &__logo {
+        flex: 100% 0 0;
+
+        &::before {
+            content: '\e905';
+            font-family: IcoMoon;
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        & .nav__link {       
+            font-size: 3.5rem;
+            color: $color-tertiary;
+        }
+    }
+     
+}
+
+.links {
+    &__text {
+        font-size: 1rem;
+        text-transform: uppercase;
+        // padding-left: 40px;
+
+        // &::before, &::after {
+        //     font-family: IcoMoon;
+        //     padding: 0 20px;
+        //     font-size: 1.5rem;
+        // }
+
+        // &:nth-of-type(1)::after,
+        // &:nth-of-type(1)::before {
+        //     content: '\e902';
+        // }
+
+        // &:nth-of-type(2)::after,
+        // &:nth-of-type(2)::before {
+        //     content: '\e903';
+        // }
+
+        // &:nth-of-type(3)::after,
+        // &:nth-of-type(3)::before {
+        //     content: '\e904';
+        // }
     }
 }

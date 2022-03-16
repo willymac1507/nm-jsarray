@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'IcoMoon';
+  src:  url('IcoMoon.eot?xyi5oz');
+  src:  url('IcoMoon.eot?xyi5oz#iefix') format('embedded-opentype'),
+    url('IcoMoon.ttf?xyi5oz') format('truetype'),
+    url('IcoMoon.woff?xyi5oz') format('woff'),
+    url('IcoMoon.svg?xyi5oz#IcoMoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'IcoMoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+  -webkit-font-feature-settings: "liga";
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  font-feature-settings: "liga";
+  -webkit-font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-heart-stroke:before {
+  content: "\e902";
+}
+.icon-loop:before {
+  content: "\e903";
+}
+.icon-aperture:before {
+  content: "\e904";
+}
+.icon-arrow-right2:before {
+  content: "\ea3c";
+}
+.icon-instagram:before {
+  content: "\ea92";
+}
+.icon-github1:before {
+  content: "\eab0";
+}
+.icon-phone_iphone:before {
+  content: "\e901";
+}
+.icon-tablet_mac:before {
+  content: "\e900";
+}
+.icon-phone:before {
+  content: "\e9e3";
+}
+.icon-location3:before {
+  content: "\e9f6";
+}
+.icon-direction:before {
+  content: "\e9fd";
+}
+.icon-road:before {
+  content: "\eac7";
+}
+.icon-arrow-up:before {
+  content: "\ebb9";
+}
+.icon-arrow-down:before {
+  content: "\ebbb";
+}
+.icon-mail2:before {
+  content: "\ec50";
+}
+.icon-facebook:before {
+  content: "\ec5c";
+}
+.icon-twitter:before {
+  content: "\ec62";
+}
+.icon-github:before {
+  content: "\ec7c";
+}
+.icon-linkedin2:before {
+  content: "\ec96";
+}
