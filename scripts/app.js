@@ -49,6 +49,11 @@ function saveEmail(address) {
         $('#email__input').val('');
         $('.save__slider').slideToggle(250);
         $('.img__container').toggleClass('slid');
+        const image = $('#main-image');
+        image.fadeOut(300);
+        setTimeout(() => {
+            newImage();
+        }, 300);
     } else {
         console.log('bah!')
     }
