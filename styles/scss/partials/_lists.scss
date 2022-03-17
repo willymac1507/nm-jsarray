@@ -1,0 +1,11 @@
+// lists
+
+.gallery__thumbnails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    list-style: none;
+    padding: 0;
+}

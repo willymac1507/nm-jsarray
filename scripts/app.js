@@ -1,18 +1,10 @@
 $(function () {
     newImage();
-
-
+    $('.colls__container').css('display', 'none');
 })
 
 async function getImage() {
-    // const randomImage = fetch('https://api.unsplash.com/photos/random',
-    //     {
-    //         headers: {
-    //         'Authorization': 'Client-ID aIc2pY_DyFNB87sgN8IKVDDSd1dRohP8uNFanNcEeIc'
-    //     }
-    // })
     const randomImage = fetch('https://picsum.photos/1000')
-        // .then(response => response.json())
         .then(data => {
             return data.url
         })
@@ -29,7 +21,6 @@ async function fadeImage(image) {
 
 async function newImage() {
     const image = $('#main-image');
-
     getImage()
         .then((url) => {
             image.attr('src', url);
@@ -44,41 +35,109 @@ async function newImage() {
 
 function saveEmail(address) {
     if (emailValid) {
+        $('.input__validation').removeClass('valid').addClass('invalid');
         const url = $('#main-image').attr('src');
-        console.log(address, url);
+        appendStorage(address, url);
         $('#email__input').val('');
         $('.save__slider').slideToggle(250);
         $('.img__container').toggleClass('slid');
-        const image = $('#main-image');
-        image.fadeOut(300);
-        setTimeout(() => {
-            newImage();
-        }, 300);
-    } else {
-        console.log('bah!')
+        refreshImage();
     }
+}
 
+function appendStorage(email, url) {
+    let colls = getJSON('colls');
+    if (colls) {
+        let collections = colls.collections;
+        // look for email in array
+        let existingEmail = collections.find(o => o.email === email);
+        // if email exists, append url to urls array
+        if (!existingEmail) {
+            let newEmail = {
+                email: email,
+                urls: [{
+                    url: url
+                }]
+            };
+            collections.push(newEmail);
+        } else {
+            let newUrl = {
+                url: url
+            };
+            collections.find(o => o.email === email).urls.push(newUrl);
+        }
+        colls.collections = collections;
+        // if email does not exist, append email and urls array to array
+    } else {
+        colls = JSON.stringify({
+            collections: [{
+                email: email,
+                urls: [{
+                    url: url
+                }]
+            }]
+        });
+    }
+    setJSON('colls', colls);
+}
+
+function getJSON(data) {
+    return JSON.parse(localStorage.getItem(data));
+}
+
+function setJSON(name, data) {
+    localStorage.setItem(name, JSON.stringify(data));
+}
+
+async function refreshImage() {
+    const image = $('#main-image');
+    image.fadeOut(300);
+    setTimeout(() => {
+        newImage();
+    }, 300);
+}
+
+function showGallery() {
+    $('.colls__content').empty();
+    const colls = getJSON('colls');
+    if (colls) {
+        collections = colls.collections;
+        collections.map((element) => {
+            urls = element.urls;
+            let urlList = '';
+            urls.map((url) => {
+                urlList += `<img src=${url.url} class='gallery__thumb'>`
+            });
+            $('.colls__content')
+                .append(`<div class='gallery__container'><h2 class='gallery__title'>${element.email}</h2><ul class='gallery__thumbnails'>${urlList}</ul></div>`);
+        });
+    }
 }
 
 let emailAddress = '';
 let emailValid = false;
 
 $('.link--refresh').on('click', async () => {
-    const image = $('#main-image');
-    image.fadeOut(300);
-    setTimeout(() => {
-        newImage();
-    }, 300);
-
+    refreshImage();
 });
 
 $('.link--like').on('click', () => {
     $('.save__slider').slideToggle(250);
     $('.img__container').toggleClass('slid');
+});
+
+$('.link--view').on('click', () => {
+    $('.main__slider').toggle('blind', {
+        direction: 'down'
+    }, 400);
+    $('.colls__container').toggle('blind', {
+        direction: 'up'
+    }, 400, () => {
+        showGallery();
+    });
 })
 
 $('#email__input').on('keyup', () => {
-
     const pattern = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i);
     emailAddress = $('#email__input').val();
     if (pattern.test(emailAddress)) {

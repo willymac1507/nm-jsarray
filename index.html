@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@200;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="fonts/style.css">
+    <link rel="stylesheet" href="styles/css/jquery-ui.theme.css">
     <link rel="stylesheet" href="styles/css/styles.css">
 </head>
 
@@ -28,21 +29,28 @@
                 <div class="links__text link--view hover-line">view collections</div>
             </div>
         </div>
-        <div class="save__slider">
-            <div class="save__container">
-                <div class="save__text">enter your email to save this to your collection</div>
-                <form class="save__form">
-                    <div class="input__container">
-                        <input type="email" name="email" id="email__input" title="enter your email" placeholder="">
-                        <div class="input__validation"></div>
-                    </div>
-                </form>
-                <div class="save__button hover-line">save</div>
+        <div class="main__slider">
+            <div class="save__slider">
+                <div class="save__container">
+                    <div class="save__text">enter your email to save this to your collection</div>
+                    <form class="save__form">
+                        <div class="input__container">
+                            <input type="email" name="email" id="email__input" title="enter your email" placeholder="">
+                            <div class="input__validation"></div>
+                        </div>
+                    </form>
+                    <div class="save__button hover-line">save</div>
+                </div>
+            </div>
+            <div class="img__container">
+                <div class="img__clipping">
+                    <img id="main-image" src="" alt="random">
+                </div>
             </div>
         </div>
-        <div class="img__container">
-            <div class="img__clipping">
-                <img id="main-image" src="" alt="random">
+        <div class="colls__container">
+            <div class="colls__content">
+            
             </div>
         </div>
     </div>
@@ -50,6 +58,7 @@
 
 
     <script src="scripts/jquery-3.6.0.min.js"></script>
+    <script src="scripts/jquery-ui.js"></script>
     <script src="scripts/app.js"></script>
 </body>
 
