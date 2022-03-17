@@ -69,14 +69,14 @@ function appendStorage(email, url) {
         colls.collections = collections;
         // if email does not exist, append email and urls array to array
     } else {
-        colls = JSON.stringify({
+        colls = {
             collections: [{
                 email: email,
                 urls: [{
                     url: url
                 }]
             }]
-        });
+        };
     }
     setJSON('colls', colls);
 }
@@ -127,14 +127,24 @@ $('.link--like').on('click', () => {
 });
 
 $('.link--view').on('click', () => {
-    $('.main__slider').toggle('blind', {
-        direction: 'down'
-    }, 400);
-    $('.colls__container').toggle('blind', {
-        direction: 'up'
-    }, 400, () => {
-        showGallery();
-    });
+    const colls = getJSON('colls');
+    if (colls) {
+        $('.main__slider').toggle('blind', {
+            direction: 'down'
+        }, 400);
+        $('.colls__container').toggle('blind', {
+            direction: 'up'
+        }, 400, () => {
+            $('.link--view span').toggleClass('view--text').toggleClass('hide--text');
+            $('.links__text').not(':nth-child(3)').fadeOut(300);
+            showGallery();
+        });
+    } else {
+        $('.empty__slider').slideToggle(250);
+        $('.img__container').toggleClass('slid');
+        $('.link--view span').toggleClass('view--text').toggleClass('hide--text');
+    }
+    
 })
 
 $('#email__input').on('keyup', () => {

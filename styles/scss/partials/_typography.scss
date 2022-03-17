@@ -45,6 +45,14 @@ input {
     }
 }
 
+.view--text::before {
+    content: 'view';
+}
+
+.hide--text::before {
+    content: 'hide';
+}
+
 .hover-line {
 	white-space: nowrap;
 	overflow: hidden;
