@@ -147,7 +147,6 @@ $('.link--view').on('click', () => {
         $('.link--view span').toggleClass('view--text').toggleClass('hide--text');
         
     }
-
 })
 
 $('#email__input').on('keyup', () => {
