@@ -469,6 +469,14 @@ h1 {
   font-weight: normal;
 }
 
+.make--hidden {
+  display: none;
+}
+
+.make--visible {
+  display: block;
+}
+
 .main__container {
   display: flex;
   flex-direction: column;
@@ -539,12 +547,31 @@ h1 {
   z-index: 1;
 }
 .colls__content {
+  position: relative;
   background-color: black;
   color: #fff;
   width: 100%;
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+.colls__modal, .colls__overlay {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+.colls__modal {
+  top: 20%;
+  padding: 30px;
+  z-index: 4;
+  transition: scale 0.4s;
+}
+.colls__overlay {
+  display: none;
+  top: 0;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 3;
 }
 
 .save__slider {
@@ -581,6 +608,12 @@ h1 {
   display: none;
 }
 
+#modal__image {
+  display: none;
+  width: 100%;
+  cursor: pointer;
+}
+
 .gallery__thumb {
   width: 100px;
   margin: 10px;
@@ -592,6 +625,13 @@ h1 {
   align-items: center;
   justify-content: center;
   margin: 10px;
+}
+
+.link--like {
+  margin-right: auto;
+}
+.link--view {
+  margin-left: auto;
 }
 
 input {

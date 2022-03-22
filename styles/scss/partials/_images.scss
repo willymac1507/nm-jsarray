@@ -5,6 +5,12 @@
     display: none;
 }
 
+#modal__image {
+    display: none;
+    width: 100%;
+    cursor: pointer;
+}
+
 .gallery__thumb {
     width: 100px;
     margin: 10px;

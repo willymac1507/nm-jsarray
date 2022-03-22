@@ -129,6 +129,7 @@ $('.link--like').on('click', () => {
 $('.link--view').on('click', () => {
     const colls = getJSON('colls');
     if (colls) {
+        $('.links__text').not(':nth-child(3)').fadeToggle(300);
         $('.main__slider').toggle('blind', {
             direction: 'down'
         }, 400);
@@ -136,15 +137,17 @@ $('.link--view').on('click', () => {
             direction: 'up'
         }, 400, () => {
             $('.link--view span').toggleClass('view--text').toggleClass('hide--text');
-            $('.links__text').not(':nth-child(3)').fadeOut(300);
+            
             showGallery();
         });
     } else {
+        $('.links__text').not(':nth-child(3)').fadeToggle(300);
         $('.empty__slider').slideToggle(250);
         $('.img__container').toggleClass('slid');
         $('.link--view span').toggleClass('view--text').toggleClass('hide--text');
+        
     }
-    
+
 })
 
 $('#email__input').on('keyup', () => {
@@ -160,4 +163,27 @@ $('#email__input').on('keyup', () => {
 
 $('.save__button').on('click', () => {
     saveEmail(emailAddress);
+})
+
+$('.colls__content').on('click', (e) => {
+    const imgSource = e.target.src;
+    const modalImage = $('#modal__image');
+    const modalContainer = $('.colls__modal');
+    const overlay = $('.colls__overlay');
+    if (imgSource) {
+        modalImage.attr('src', e.target.src).fadeIn(500);
+        modalContainer.removeClass('make--hidden').addClass('make--visible');
+        overlay.fadeIn(500);
+    };
+})
+
+$('#modal__image').on('click', () => {
+    const modalImage = $('#modal__image');
+    const overlay = $('.colls__overlay');
+    modalImage.fadeOut(500);
+    overlay.fadeOut(500);
+    setTimeout(() => {
+        $('.colls__modal').removeClass('make--visible').addClass('make--hidden');
+        $('#modal__image').removeAttr('src');
+    }, 700);    
 })
