@@ -1,6 +1,6 @@
 // containers //
 
-@use "variables"as *;
+@use "utilities" as *;
 
 .main {
 
@@ -101,9 +101,12 @@
 
     &__modal {
         top: 20%;
-        padding: 30px;
+        padding: 10px;
         z-index: 4;
-        transition: scale 0.4s;
+
+        @include mqxs {
+            top: 10%;
+        }
     }
 
     &__overlay {
@@ -131,8 +134,12 @@
         align-items: center;
         height: 100%;
         width: 100%;
-        padding: 15px 40px 10px;
+        padding: 15px 20px 10px;
         background-color: $color-tertiary;
+
+        @include mqxs {
+            padding: 15px 40px 10px;
+        }
     }
 }
 
@@ -147,5 +154,9 @@
 }
 
 .gallery__container {
-    border-bottom: solid 1px rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+
+    &:hover {
+        color: darken($color-primary, 10%);
+    }
 }

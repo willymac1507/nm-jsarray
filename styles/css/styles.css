@@ -562,9 +562,13 @@ h1 {
 }
 .colls__modal {
   top: 20%;
-  padding: 30px;
+  padding: 10px;
   z-index: 4;
-  transition: scale 0.4s;
+}
+@media screen and (min-width: 370px) {
+  .colls__modal {
+    top: 10%;
+  }
 }
 .colls__overlay {
   display: none;
@@ -587,8 +591,13 @@ h1 {
   align-items: center;
   height: 100%;
   width: 100%;
-  padding: 15px 40px 10px;
+  padding: 15px 20px 10px;
   background-color: #636564;
+}
+@media screen and (min-width: 370px) {
+  .save__container {
+    padding: 15px 40px 10px;
+  }
 }
 
 .empty__slider {
@@ -600,7 +609,10 @@ h1 {
 }
 
 .gallery__container {
-  border-bottom: solid 1px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+.gallery__container:hover {
+  color: #758a9c;
 }
 
 #main-image {
@@ -615,7 +627,7 @@ h1 {
 }
 
 .gallery__thumb {
-  width: 100px;
+  width: 150px;
   margin: 10px;
   cursor: pointer;
 }
@@ -668,6 +680,24 @@ input {
   cursor: pointer;
 }
 
+@media screen and (min-width: 370px) {
+  .link--like span::before {
+    content: "i ";
+  }
+  .link--like span::after {
+    content: " this";
+  }
+  .link--view span::after {
+    content: " collections";
+  }
+  .link--refresh span::before {
+    content: "show ";
+  }
+  .link--refresh span::after {
+    content: " image";
+  }
+}
+
 .view--text::before {
   content: "view";
 }
@@ -699,20 +729,34 @@ input {
   transform-origin: 100% 50%;
 }
 
-.save__text, .save__button {
+.save__button,
+.cancel__button {
   font-weight: 400;
   text-transform: uppercase;
-}
-.save__text {
-  color: #cccccc;
-}
-.save__button {
   color: #bfbfbf;
   font-size: 1.1rem;
 }
 
+.save__text {
+  text-transform: uppercase;
+  color: #cccccc;
+}
+.save__text span::after {
+  content: "image";
+}
+@media screen and (min-width: 370px) {
+  .save__text span::after {
+    content: "to your collection";
+  }
+}
+
+.content__title {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
 .gallery__title {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 100;
   text-align: center;
   margin-bottom: 0;
@@ -759,27 +803,36 @@ input {
   width: 90%;
   height: 100%;
   border: none;
+  border-radius: 3px;
 }
 
-.save__button {
+.save__button,
+.cancel__button {
   padding: 5px 20px;
-  height: 100%;
+  height: 60%;
   border-left: 1px solid #93A3B1;
   border-right: 1px solid #93A3B1;
   border-radius: 5px;
 }
-.save__button:hover {
+.save__button:hover,
+.cancel__button:hover {
   cursor: pointer;
 }
 
 .gallery__thumbnails {
-  display: flex;
+  display: none;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
   list-style: none;
   padding: 0;
+  margin: 0;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.6);
+}
+
+.gallery__visible {
+  display: flex !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,6 +1,6 @@
 // typography
 
-@use "variables" as *;
+@use "utilities"as *;
 
 input {
     font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -26,23 +26,55 @@ input {
             font-size: 2rem;
         }
 
-        & .nav__link {       
+        & .nav__link {
             font-size: 3.5rem;
             color: $color-tertiary;
         }
     }
-     
+
 }
 
 .links {
     &__text {
         font-size: 1rem;
         text-transform: uppercase;
-        
+
         &:hover {
             cursor: pointer;
         }
     }
+}
+
+.link {
+    @include mqxs {
+        &--like span {
+            &::before {
+                content: 'i ';
+            }
+
+            &::after {
+                content: ' this';
+            }
+        }
+
+        &--view span {
+            &::after {
+                content: ' collections';
+            }
+        }
+
+        &--refresh span {
+            &::before {
+                content: 'show ';
+            }
+
+            &::after {
+                content: ' image';
+            }
+        }
+    }
+
+
 }
 
 .view--text::before {
@@ -54,10 +86,10 @@ input {
 }
 
 .hover-line {
-	white-space: nowrap;
-	overflow: hidden;
-	position: relative;
-	display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
 
     &::before {
         content: '';
@@ -78,26 +110,39 @@ input {
     }
 }
 
+.save__button,
+.cancel__button {
+    font-weight: 400;
+    text-transform: uppercase;
+    color: darken(#fff, 25%);
+    font-size: 1.1rem;
+}
+
 .save {
 
-    &__text,
-    &__button {
-        font-weight: 400;
-        text-transform: uppercase;
-    }
-    
     &__text {
-    color: darken(#fff, 20%);
-    
-    }
-    &__button {
-        color: darken(#fff, 25%);
-        font-size: 1.1rem;   
+        text-transform: uppercase;
+        color: darken(#fff, 20%);
+
+        & span {
+            &::after {
+                content: 'image';
+
+                @include mqxs {
+                    content: 'to your collection'
+                }
+            }
+        }
     }
 }
 
+.content__title {
+    font-size: 1.1rem;
+    text-align: center;
+}
+
 .gallery__title {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 100;
     text-align: center;
     margin-bottom: 0;

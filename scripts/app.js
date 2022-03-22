@@ -39,8 +39,7 @@ function saveEmail(address) {
         const url = $('#main-image').attr('src');
         appendStorage(address, url);
         $('#email__input').val('');
-        $('.save__slider').slideToggle(250);
-        $('.img__container').toggleClass('slid');
+        showLike();
         refreshImage();
     }
 }
@@ -98,7 +97,7 @@ async function refreshImage() {
 }
 
 function showGallery() {
-    $('.colls__content').empty();
+    $('.colls__content').empty().append('<h3 class="content__title">Click an email to expand</h3>');
     const colls = getJSON('colls');
     if (colls) {
         collections = colls.collections;
@@ -114,6 +113,12 @@ function showGallery() {
     }
 }
 
+function showLike() {
+    $('.links__text').not(':nth-child(1)').fadeToggle(300);
+    $('.save__slider').slideToggle(250);
+    $('.img__container').toggleClass('slid');
+}
+
 let emailAddress = '';
 let emailValid = false;
 
@@ -122,9 +127,12 @@ $('.link--refresh').on('click', async () => {
 });
 
 $('.link--like').on('click', () => {
-    $('.save__slider').slideToggle(250);
-    $('.img__container').toggleClass('slid');
+    showLike();
 });
+
+$('.cancel__button').on('click', () => {
+    showLike();
+})
 
 $('.link--view').on('click', () => {
     const colls = getJSON('colls');
@@ -137,7 +145,7 @@ $('.link--view').on('click', () => {
             direction: 'up'
         }, 400, () => {
             $('.link--view span').toggleClass('view--text').toggleClass('hide--text');
-            
+
             showGallery();
         });
     } else {
@@ -145,7 +153,7 @@ $('.link--view').on('click', () => {
         $('.empty__slider').slideToggle(250);
         $('.img__container').toggleClass('slid');
         $('.link--view span').toggleClass('view--text').toggleClass('hide--text');
-        
+
     }
 })
 
@@ -184,5 +192,24 @@ $('#modal__image').on('click', () => {
     setTimeout(() => {
         $('.colls__modal').removeClass('make--visible').addClass('make--hidden');
         $('#modal__image').removeAttr('src');
-    }, 700);    
+    }, 700);
 })
+
+$('.colls__container').on('click', (e) => {
+    const target = $(e.target);
+    if (target.is('h2')) {
+        const accord = target.next();
+        imgNumber = accord.children().length;
+        accord.slideToggle({
+            duration: imgNumber * 100,
+            start: function () {
+                accord.css('display', 'flex');
+            }
+        });
+        // setTimeout(() => {
+        //     accord.removeAttr('style').toggleClass('gallery__visible')
+        // }, 700);
+    }
+
+})
+// console.log(e);

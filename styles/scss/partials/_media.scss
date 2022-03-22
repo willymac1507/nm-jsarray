@@ -1,0 +1,7 @@
+// media queries
+
+@mixin mqxs {
+    @media screen and (min-width: 370px) {
+        @content;
+    }
+}
