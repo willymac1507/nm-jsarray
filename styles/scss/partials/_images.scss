@@ -3,6 +3,11 @@
 #main-image {
     height: 100%;
     display: none;
+
+    &.narrow {
+        height: unset;
+        width: 100%;
+    }
 }
 
 #modal__image {

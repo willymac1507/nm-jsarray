@@ -502,6 +502,16 @@ h1 {
   padding: 25px 50px 15px;
   width: 100%;
 }
+@media screen and (min-width: 370px) {
+  .nav__container {
+    max-width: 450px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .nav__container {
+    max-width: 650px;
+  }
+}
 
 .links__container {
   display: flex;
@@ -619,6 +629,10 @@ h1 {
   height: 100%;
   display: none;
 }
+#main-image.narrow {
+  height: unset;
+  width: 100%;
+}
 
 #modal__image {
   display: none;
@@ -678,6 +692,11 @@ input {
 }
 .links__text:hover {
   cursor: pointer;
+}
+@media screen and (min-width: 576px) {
+  .links__text {
+    font-size: 1.3rem;
+  }
 }
 
 @media screen and (min-width: 370px) {
@@ -741,6 +760,11 @@ input {
   text-transform: uppercase;
   color: #cccccc;
 }
+@media screen and (min-width: 576px) {
+  .save__text {
+    font-size: 1.3rem;
+  }
+}
 .save__text span::after {
   content: "image";
 }
@@ -754,12 +778,22 @@ input {
   font-size: 1.1rem;
   text-align: center;
 }
+@media screen and (min-width: 768px) {
+  .content__title {
+    font-size: 1.6rem;
+  }
+}
 
 .gallery__title {
   font-size: 1rem;
   font-weight: 100;
   text-align: center;
   margin-bottom: 0;
+}
+@media screen and (min-width: 768px) {
+  .gallery__title {
+    font-size: 1.5rem;
+  }
 }
 
 .save__form {
@@ -776,6 +810,7 @@ input {
 .input__container {
   display: flex;
   width: 80%;
+  max-width: 250px;
   height: 1.5rem;
   background-color: #fff;
   border-radius: 3px;

@@ -29,8 +29,9 @@ async function newImage() {
             image.load(window.location.href + " #main-image");
         })
         .then(() => {
-            image.fadeIn('slow');
-        });
+            image.fadeIn('slow')
+        })
+        .then(aspectRatio());
 }
 
 function saveEmail(address) {
@@ -119,6 +120,16 @@ function showLike() {
     $('.img__container').toggleClass('slid');
 }
 
+async function aspectRatio() {
+    const mainImage = $('#main-image');
+    const imageContainer = $('.img__container')
+    if (imageContainer.width() < imageContainer.height()) {
+        mainImage.removeClass('narrow');
+    } else if (mainImage.height() < imageContainer.width()){
+        mainImage.addClass('narrow');
+    }
+}
+
 let emailAddress = '';
 let emailValid = false;
 
@@ -134,6 +145,7 @@ $('.cancel__button').on('click', () => {
     showLike();
 })
 
+// open collections view
 $('.link--view').on('click', () => {
     const colls = getJSON('colls');
     if (colls) {
@@ -157,6 +169,7 @@ $('.link--view').on('click', () => {
     }
 })
 
+// email validation
 $('#email__input').on('keyup', () => {
     const pattern = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i);
     emailAddress = $('#email__input').val();
@@ -168,22 +181,42 @@ $('#email__input').on('keyup', () => {
     }
 })
 
+// save button functionality
 $('.save__button').on('click', () => {
     saveEmail(emailAddress);
 })
 
+
 $('.colls__content').on('click', (e) => {
-    const imgSource = e.target.src;
-    const modalImage = $('#modal__image');
-    const modalContainer = $('.colls__modal');
-    const overlay = $('.colls__overlay');
-    if (imgSource) {
-        modalImage.attr('src', e.target.src).fadeIn(500);
-        modalContainer.removeClass('make--hidden').addClass('make--visible');
-        overlay.fadeIn(500);
-    };
+    // show modal version of image and overlay on click of thumbnail
+    const target = $(e.target);
+    if (target.is('img')) {
+        const imgSource = e.target.src;
+        const modalImage = $('#modal__image');
+        const modalHeight = (($(window).width() / 2) - 10);
+        const modalTop = `calc(50% - ${modalHeight}px)`;
+        const modalContainer = $('.colls__modal');
+        const overlay = $('.colls__overlay');
+        if (imgSource) {
+            modalImage.attr('src', e.target.src).fadeIn(500);
+            modalContainer.removeClass('make--hidden').css('top', modalTop).addClass('make--visible');
+            overlay.fadeIn(500);
+        };
+
+    } else if (target.is('h2')) {
+        // expand collection when email address clicked
+        const accord = target.next();
+        imgNumber = accord.children().length;
+        accord.slideToggle({
+            duration: imgNumber * 100,
+            start: function () {
+                accord.css('display', 'flex');
+            }
+        });
+    } 
 })
 
+// close modal image and overlay on click
 $('#modal__image').on('click', () => {
     const modalImage = $('#modal__image');
     const overlay = $('.colls__overlay');
@@ -195,21 +228,13 @@ $('#modal__image').on('click', () => {
     }, 700);
 })
 
-$('.colls__container').on('click', (e) => {
-    const target = $(e.target);
-    if (target.is('h2')) {
-        const accord = target.next();
-        imgNumber = accord.children().length;
-        accord.slideToggle({
-            duration: imgNumber * 100,
-            start: function () {
-                accord.css('display', 'flex');
-            }
-        });
-        // setTimeout(() => {
-        //     accord.removeAttr('style').toggleClass('gallery__visible')
-        // }, 700);
-    }
 
-})
-// console.log(e);
+
+// ensure main image fills image container on screen resize
+$(window)
+    .on('resize', () => {
+        aspectRatio();
+    })
+    .on('load', () => {
+        aspectRatio();
+    })
