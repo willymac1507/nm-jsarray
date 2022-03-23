@@ -41,7 +41,7 @@
 
     @include mql {
         flex-direction: row;
-        max-width: unset;
+        max-width: 1080px;
         padding: 25px 40px 0;
     }
 }
@@ -64,6 +64,8 @@
 .img {
 
     &__container {
+        display: flex;
+        justify-content: center;
         background-color: $color-secondary;
         padding: 40px;
         width: 100%;
@@ -83,6 +85,7 @@
         justify-content: center;
         position: relative;
         width: 100%;
+        max-width: 1000px;
         height: 100%;
         overflow: hidden;
         box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
