@@ -38,6 +38,12 @@
     @include mqs {
         max-width: 650px;
     }
+
+    @include mql {
+        flex-direction: row;
+        max-width: unset;
+        padding: 25px 40px 0;
+    }
 }
 
 .links__container {
@@ -48,6 +54,11 @@
     margin-top: auto;
     justify-content: space-between;
     align-items: center;
+
+    @include mql {
+        flex: 40% 0 0;
+        margin: auto 0 auto auto;
+    }
 }
 
 .img {
@@ -114,6 +125,13 @@
 
         @include mqxs {
             top: 10%;
+        }
+
+        @include mqland {
+            left: 20%;
+            top: 0;
+            height: 100%;
+            width: auto;
         }
     }
 

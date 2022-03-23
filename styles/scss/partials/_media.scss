@@ -17,3 +17,21 @@
         @content;
     }
 }
+
+@mixin mql {
+    @media screen and (min-width: 992px) {
+        @content;
+    }
+}
+
+@mixin mqland {
+    @media screen and (orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin mqlandm {
+    @media screen and (orientation: landscape) and (min-height: 768px) {
+        @content;
+    }
+}

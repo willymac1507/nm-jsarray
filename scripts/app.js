@@ -125,7 +125,7 @@ async function aspectRatio() {
     const imageContainer = $('.img__container')
     if (imageContainer.width() < imageContainer.height()) {
         mainImage.removeClass('narrow');
-    } else if (mainImage.height() < imageContainer.width()){
+    } else if (mainImage.height() < imageContainer.width()) {
         mainImage.addClass('narrow');
     }
 }
@@ -188,33 +188,64 @@ $('.save__button').on('click', () => {
 
 
 $('.colls__content').on('click', (e) => {
-    // show modal version of image and overlay on click of thumbnail
+
     const target = $(e.target);
     if (target.is('img')) {
+        // show modal version of image and overlay on click of thumbnail
+        const portrait = (window.innerHeight > window.innerWidth) ? true : false;
         const imgSource = e.target.src;
         const modalImage = $('#modal__image');
-        const modalHeight = (($(window).width() / 2) - 10);
-        const modalTop = `calc(50% - ${modalHeight}px)`;
+        let modalShift = '';
+        if (portrait) {
+            const modalHeight = (($(window).width() / 2) - 10);
+            modalShift = `calc(50% - ${modalHeight}px)`;
+        } else {
+            const modalWidth = (($(window).height() / 2) - 10);
+            modalShift = `calc(50% - ${modalWidth}px)`;
+        }
         const modalContainer = $('.colls__modal');
         const overlay = $('.colls__overlay');
         if (imgSource) {
             modalImage.attr('src', e.target.src).fadeIn(500);
-            modalContainer.removeClass('make--hidden').css('top', modalTop).addClass('make--visible');
+            modalContainer.removeClass('make--hidden').addClass('make--visible');
+            if (portrait) {
+                modalContainer.css('top', modalShift)
+            } else {
+                modalContainer.css('left', modalShift)
+            }
             overlay.fadeIn(500);
         };
 
     } else if (target.is('h2')) {
         // expand collection when email address clicked
         const accord = target.next();
-        imgNumber = accord.children().length;
-        accord.slideToggle({
-            duration: imgNumber * 100,
-            start: function () {
-                accord.css('display', 'flex');
+        if (accord.is(':visible')) {
+            // close the current gallery
+            accord.slideToggle({
+                duration: 400,
+                start: function () {
+                    accord.css('display', 'flex');
+                }
+            });
+        } else {
+            //check for already open galleries and close
+            const openAccord = ($('.gallery__thumbnails:visible'));
+            if (openAccord.length > 0) {
+                for (let i = 0; i <= openAccord.length; i++) {
+                    $(openAccord[i]).slideToggle(400);
+                }
             }
-        });
-    } 
+            // open the required gallery
+            accord.slideToggle({
+                duration: 400,
+                start: function () {
+                    accord.css('display', 'flex');
+                }
+            });
+        }
+    }
 })
+
 
 // close modal image and overlay on click
 $('#modal__image').on('click', () => {
@@ -223,7 +254,7 @@ $('#modal__image').on('click', () => {
     modalImage.fadeOut(500);
     overlay.fadeOut(500);
     setTimeout(() => {
-        $('.colls__modal').removeClass('make--visible').addClass('make--hidden');
+        $('.colls__modal').removeClass('make--visible').addClass('make--hidden').removeAttr('style');
         $('#modal__image').removeAttr('src');
     }, 700);
 })

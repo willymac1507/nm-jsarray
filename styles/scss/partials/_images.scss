@@ -1,5 +1,7 @@
 // images //
 
+@use 'utilities' as *;
+
 #main-image {
     height: 100%;
     display: none;
@@ -14,6 +16,20 @@
     display: none;
     width: 100%;
     cursor: pointer;
+
+    @include mqm {
+        padding: 50px;
+    }
+
+    @include mqland {
+        width: unset;
+        height: 100%;
+        padding: 0;
+    }
+
+    @include mqlandm {
+        padding: 50px;
+    }
 }
 
 .gallery__thumb {

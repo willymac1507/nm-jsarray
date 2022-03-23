@@ -19,6 +19,10 @@ input {
     &__logo {
         flex: 100% 0 0;
 
+        @include mql {
+            flex: 20% 0 0;
+        }
+
         &::before {
             content: '\e905';
             font-family: IcoMoon;
@@ -45,6 +49,10 @@ input {
 
         @include mqs {
             font-size: 1.3rem;
+        }
+
+        @include mql {
+            margin-top: 20px;
         }
     }
 
