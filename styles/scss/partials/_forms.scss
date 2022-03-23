@@ -54,4 +54,8 @@
     height: 100%;
     border: none;
     border-radius: 3px;
+
+    &:focus {
+        outline: none;
+    }
 }

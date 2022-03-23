@@ -36,7 +36,8 @@ async function newImage() {
 
 function saveEmail(address) {
     if (emailValid) {
-        $('.input__validation').removeClass('valid').addClass('invalid');
+        $('.input__validation').removeClass('valid').removeClass('invalid');
+        emailValid = false;
         const url = $('#main-image').attr('src');
         appendStorage(address, url);
         $('#email__input').val('');
@@ -173,11 +174,16 @@ $('.link--view').on('click', () => {
 $('#email__input').on('keyup', () => {
     const pattern = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i);
     emailAddress = $('#email__input').val();
-    if (pattern.test(emailAddress)) {
-        $('.input__validation').removeClass('invalid').addClass('valid');
-        emailValid = true;
+    console.log(emailAddress.length)
+    if (emailAddress.length === 0) {
+        $('.input__validation').removeClass('invalid').removeClass('valid');
     } else {
-        $('.input__validation').removeClass('valid').addClass('invalid');
+        if (pattern.test(emailAddress)) {
+            $('.input__validation').removeClass('invalid').addClass('valid');
+            emailValid = true;
+        } else {
+            $('.input__validation').removeClass('valid').addClass('invalid');
+        }
     }
 })
 
