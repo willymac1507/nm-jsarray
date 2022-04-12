@@ -174,7 +174,7 @@ $('.link--view').on('click', () => {
 
 // email validation
 $('#email__input').on('keyup', () => {
-    const pattern = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i);
+    const pattern = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     emailAddress = $('#email__input').val();
     if (emailAddress.length === 0) {
         $('.input__validation, .input__container, .save__text').removeClass('invalid').removeClass('valid');
