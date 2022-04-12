@@ -822,12 +822,19 @@ input {
   }
 }
 .save__text span::after {
-  content: "image";
+  content: "enter your email to save this image";
 }
 @media screen and (min-width: 370px) {
   .save__text span::after {
-    content: "to your collection";
+    content: "enter your email to save this to your collection";
   }
+}
+.save__text.invalid span::after {
+  content: "email is not valid";
+  color: red;
+}
+.save__text.valid span::after {
+  content: "valid email - click save";
 }
 
 .content__title {
@@ -870,6 +877,12 @@ input {
   height: 1.5rem;
   background-color: #fff;
   border-radius: 3px;
+}
+.input__container.valid {
+  border: 1px solid green;
+}
+.input__container.invalid {
+  border: 1px solid red;
 }
 .input__validation.valid::after {
   content: "";

@@ -144,14 +144,33 @@ input {
 
         & span {
             &::after {
-                content: 'image';
+                content: 'enter your email to save this image';
 
                 @include mqxs {
-                    content: 'to your collection'
+                    content: 'enter your email to save this to your collection'
+                }
+            }
+        }
+
+        &.invalid {
+            & span {
+                &::after {
+                    content: 'email is not valid';
+                    color: red;
+                }
+            }
+        }
+
+        &.valid {
+            & span {
+                &::after {
+                    content: 'valid email - click save';
                 }
             }
         }
     }
+
+    
 }
 
 .content__title {

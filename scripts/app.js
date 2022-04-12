@@ -143,6 +143,8 @@ $('.link--like').on('click', () => {
 });
 
 $('.cancel__button').on('click', () => {
+    $('#email__input').val('');
+    $('.input__validation, .input__container, .save__text').removeClass('invalid').removeClass('valid');
     showLike();
 })
 
@@ -174,15 +176,15 @@ $('.link--view').on('click', () => {
 $('#email__input').on('keyup', () => {
     const pattern = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i);
     emailAddress = $('#email__input').val();
-    console.log(emailAddress.length)
     if (emailAddress.length === 0) {
-        $('.input__validation').removeClass('invalid').removeClass('valid');
+        $('.input__validation, .input__container, .save__text').removeClass('invalid').removeClass('valid');
     } else {
         if (pattern.test(emailAddress)) {
-            $('.input__validation').removeClass('invalid').addClass('valid');
+            $('.input__validation, .input__container, .save__text').removeClass('invalid').addClass('valid');
             emailValid = true;
         } else {
-            $('.input__validation').removeClass('valid').addClass('invalid');
+            $('.input__validation, .input__container, .save__text').removeClass('valid').addClass('invalid');
+            emailValid = false;
         }
     }
 })

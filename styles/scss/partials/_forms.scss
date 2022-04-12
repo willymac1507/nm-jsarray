@@ -22,6 +22,14 @@
         height: 1.5rem;
         background-color: #fff;
         border-radius: 3px;
+
+        &.valid {
+            border: 1px solid green;
+        }
+
+        &.invalid {
+            border: 1px solid red;
+        }
     }
 
     &__validation.valid {
