@@ -1,25 +1,26 @@
 // navbar
 
-@use 'utilities' as *;
+@use "utilities" as *;
 
 .nav {
     &__item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 10px;
 
-        @include mql {
-            justify-content: flex-start;
-        }
-    }
+		@include mql {
+			justify-content: flex-start;
+		}
+	}
 }
 
 .link {
-    &--like {
-        margin-right: auto;
-    }
-    &--view {
-        margin-left: auto;
-    }
+	&--like {
+		margin-right: auto;
+	}
+
+	&--view {
+		margin-left: auto;
+	}
 }

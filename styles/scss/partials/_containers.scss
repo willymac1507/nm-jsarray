@@ -3,189 +3,186 @@
 @use "utilities" as *;
 
 .main {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+		max-height: calc(-webkit-fill-available - 120px);
+		height: 100vh;
+		width: 100%;
+	}
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        max-height: calc(-webkit-fill-available - 120px);
-        height: 100vh;
-        width: 100%;
-    }
-
-    &__slider {
-        margin-top: 10px;
-        width: 100%;
-        height: calc(100% - 120px);
-        z-index: 2;
-    }
+	&__slider {
+		margin-top: 10px;
+		width: 100%;
+		height: calc(100% - 120px);
+		z-index: 2;
+	}
 }
 
 .nav__container {
-    display: flex;
-    flex-direction: column;
-    align-items: space-between;
-    justify-content: center;
-    height: 110px;
-    padding: 25px 50px 15px;
-    width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: space-between;
+	justify-content: center;
+	height: 110px;
+	padding: 25px 50px 15px;
+	width: 100%;
 
-    @include mqxs {
-        max-width: 450px;
-    }
+	@include mqxs {
+		max-width: 450px;
+	}
 
-    @include mqs {
-        max-width: 650px;
-    }
+	@include mqs {
+		max-width: 650px;
+	}
 
-    @include mql {
-        flex-direction: row;
-        max-width: 1080px;
-        padding: 25px 40px 0;
-    }
+	@include mql {
+		flex-direction: row;
+		max-width: 1080px;
+		padding: 25px 40px 0;
+	}
 }
 
 .links__container {
-    display: flex;
-    flex-direction: row;
-    height: 50%;
-    width: 100%;
-    margin-top: auto;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	flex-direction: row;
+	height: 50%;
+	width: 100%;
+	margin-top: auto;
+	justify-content: space-between;
+	align-items: center;
 
-    @include mql {
-        flex: 40% 0 0;
-        margin: auto 0 auto auto;
-    }
+	@include mql {
+		flex: 40% 0 0;
+		margin: auto 0 auto auto;
+	}
 }
 
 .img {
+	&__container {
+		display: flex;
+		justify-content: center;
+		background-color: $color-secondary;
+		padding: 40px;
+		width: 100%;
+		height: 100%;
+		transition: 0.4s;
 
-    &__container {
-        display: flex;
-        justify-content: center;
-        background-color: $color-secondary;
-        padding: 40px;
-        width: 100%;
-        height: 100%;
-        transition: 0.4s;
+		&.slid {
+			height: calc(100% - 120px);
+			margin-top: 120px;
+			transition: 0.4s;
+		}
+	}
 
-        &.slid {
-            height: calc(100% - 120px);
-            margin-top: 120px;
-            transition: 0.4s;
-        }
-    }
-
-    &__clipping {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: 100%;
-        max-width: 1000px;
-        height: 100%;
-        overflow: hidden;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-    }
+	&__clipping {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		width: 100%;
+		max-width: 1000px;
+		height: 100%;
+		overflow: hidden;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	}
 }
 
 .colls {
-    &__container {
-        position: absolute;
-        top: 120px;
-        left: 0;
-        background-color: $color-secondary;
-        padding: 40px;
-        width: 100%;
-        height: calc(100% - 120px);
-        z-index: 1;
-    }
+	&__container {
+		position: absolute;
+		top: 120px;
+		left: 0;
+		background-color: $color-secondary;
+		padding: 40px;
+		width: 100%;
+		height: calc(100% - 120px);
+		z-index: 1;
+	}
 
-    &__content {
-        position: relative;
-        background-color: black;
-        color: #fff;
-        width: 100%;
-        height: 100%;
-        overflow-y: auto;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-    }
+	&__content {
+		position: relative;
+		background-color: black;
+		color: #fff;
+		width: 100%;
+		height: 100%;
+		overflow-y: auto;
+		box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+	}
 
-    &__modal,
-    &__overlay {
-        position: absolute;
-        left: 0;
-        width: 100%;
-    }
+	&__modal,
+	&__overlay {
+		position: absolute;
+		left: 0;
+		width: 100%;
+	}
 
-    &__modal {
-        top: 20%;
-        padding: 10px;
-        z-index: 4;
+	&__modal {
+		top: 20%;
+		padding: 10px;
+		z-index: 4;
 
-        @include mqxs {
-            top: 10%;
-        }
+		@include mqxs {
+			top: 10%;
+		}
 
-        @include mqland {
-            left: 20%;
-            top: 0;
-            height: 100%;
-            width: auto;
-        }
-    }
+		@include mqland {
+			left: 20%;
+			top: 0;
+			height: 100%;
+			width: auto;
+		}
+	}
 
-    &__overlay {
-        display: none;
-        top: 0;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        z-index: 3;
-    }
+	&__overlay {
+		display: none;
+		top: 0;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.6);
+		z-index: 3;
+	}
 }
 
 .save {
+	&__slider {
+		display: none;
+		height: 120px;
+		width: 100%;
+		position: absolute;
+		top: 120px;
+	}
 
-    &__slider {
-        display: none;
-        height: 120px;
-        width: 100%;
-        position: absolute;
-        top: 120px;
-    }
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		height: 100%;
+		width: 100%;
+		padding: 15px 20px 10px;
+		background-color: $color-tertiary;
 
-    &__container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-        padding: 15px 20px 10px;
-        background-color: $color-tertiary;
-
-        @include mqxs {
-            padding: 15px 40px 10px;
-        }
-    }
+		@include mqxs {
+			padding: 15px 40px 10px;
+		}
+	}
 }
 
 .empty {
-    &__slider {
-        display: none;
-        height: 120px;
-        width: 100%;
-        position: absolute;
-        top: 120px;
-    }
+	&__slider {
+		display: none;
+		height: 120px;
+		width: 100%;
+		position: absolute;
+		top: 120px;
+	}
 }
 
 .gallery__container {
-    cursor: pointer;
+	cursor: pointer;
 
-    &:hover {
-        color: darken($color-primary, 10%);
-    }
+	&:hover {
+		color: darken($color-primary, 10%);
+	}
 }
